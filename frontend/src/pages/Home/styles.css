@@ -1,0 +1,16 @@
+.home-container {
+    background-image: url("../../assets/background_home2.jpg");
+    width: 100%;
+    max-width: 1278px;
+    height: 86vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-container video form {
+    display: flex;
+    align-items: center;    
+  }

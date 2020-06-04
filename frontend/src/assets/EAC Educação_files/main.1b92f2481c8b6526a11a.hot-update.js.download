@@ -1,0 +1,340 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/pages/Register/index.js":
+/*!*************************************!*\
+  !*** ./src/pages/Register/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Register; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.esm.js");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ "./src/pages/Register/styles.css");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_eac_logo_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/eac_logo.png */ "./src/assets/eac_logo.png");
+/* harmony import */ var _assets_eac_logo_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_eac_logo_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/api */ "./src/services/api.js");
+/* harmony import */ var alert_node__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! alert-node */ "./node_modules/alert-node/index.js");
+/* harmony import */ var alert_node__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(alert_node__WEBPACK_IMPORTED_MODULE_6__);
+var _jsxFileName = "C:\\www\\eaceducacao\\frontend\\src\\pages\\Register\\index.js";
+
+
+
+
+
+
+
+function Register() {
+  const [Nome, setNome] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Cnpj_Cpf, setCnpj_Cpf] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Telefone, setTelefone] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Email, setEmail] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Logradouro, setLogradouro] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Numero, setNumero] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Bairro, setBairro] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Cep, setCep] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Cidade, setCidade] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Estado, setEstado] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Escola, setEscola] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const [Senha, setSenha] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const emailOK = false;
+
+  async function inputCPF(Cnpj_Cpf) {
+    const {
+      cpf
+    } = __webpack_require__(/*! cpf-cnpj-validator */ "./node_modules/cpf-cnpj-validator/dist/cpf-cnpj-validator.es.js");
+
+    if (!cpf.isValid(Cnpj_Cpf)) {
+      alert_node__WEBPACK_IMPORTED_MODULE_6___default()('CPF Inválido');
+      return '';
+    } else {
+      return cpf.format(Cnpj_Cpf);
+    }
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if ((Cnpj_Cpf === null || Cnpj_Cpf === void 0 ? void 0 : Cnpj_Cpf.length) == 11) inputCPF(Cnpj_Cpf).then(data => setCnpj_Cpf(data));
+  }, [inputCPF]);
+
+  async function cepInput(Cep) {
+    const endereco = await __webpack_require__(/*! cep-promise */ "./node_modules/cep-promise/dist/cep-promise-browser.min.js");
+    return endereco(Cep);
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if ((Cep === null || Cep === void 0 ? void 0 : Cep.length) == 8) cepInput(Cep).then(data => {
+      setEstado(data.state);
+      setCidade(data.city);
+      setBairro(data.neighborhood);
+      setLogradouro(data.street);
+    });
+  }, [cepInput]);
+
+  async function handleRegister(e) {
+    e.preventDefault();
+    const data = {
+      Nome,
+      Cnpj_Cpf,
+      Telefone,
+      Email,
+      Logradouro,
+      Numero,
+      Bairro,
+      Cep,
+      Cidade,
+      Estado,
+      Escola,
+      Senha
+    };
+    const response = await _services_api__WEBPACK_IMPORTED_MODULE_5__["default"].post('users', data);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "register-container",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 13
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 17
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 21
+    }
+  }, "Cadastro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 21
+    }
+  }, "Fa\xE7a seu cadastro e comece a revolucionar a sua forma de ensino."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "back-link",
+    to: "/",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90,
+      columnNumber: 21
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__["FiArrowLeft"], {
+    size: 16,
+    color: "#A9A9A9",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 91,
+      columnNumber: 25
+    }
+  }), "Voltar para tela de logon."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _assets_eac_logo_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+    alt: "EAC",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94,
+      columnNumber: 21
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97,
+      columnNumber: 17
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Nome",
+    value: Nome,
+    onChange: e => setNome(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 103,
+      columnNumber: 21
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "CPF",
+    maxLength: 11,
+    value: Cnpj_Cpf,
+    onChange: e => setCnpj_Cpf(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104,
+      columnNumber: 25
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Telefone",
+    value: Telefone,
+    onChange: e => setTelefone(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109,
+      columnNumber: 25
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    placeholder: "E-mail",
+    value: Email,
+    onChange: e => setEmail(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "CEP",
+    style: {
+      width: 200
+    },
+    value: Cep,
+    onChange: e => setCep(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 122,
+      columnNumber: 21
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Rua",
+    value: Logradouro,
+    onChange: e => setLogradouro(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123,
+      columnNumber: 25
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "N\xB0",
+    style: {
+      width: 80
+    },
+    value: Numero,
+    onChange: e => setNumero(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 127,
+      columnNumber: 25
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Bairro",
+    value: Bairro,
+    onChange: e => setBairro(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 132,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 21
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Cidade",
+    value: Cidade,
+    onChange: e => setCidade(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 25
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "UF",
+    style: {
+      width: 80
+    },
+    value: Estado,
+    onChange: e => setEstado(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 25
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Escola",
+    value: Escola,
+    onChange: e => setEscola(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 146,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Senha",
+    value: Senha,
+    onChange: e => setSenha(e.target.value),
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 150,
+      columnNumber: 21
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "button",
+    type: "submit",
+    onSubmit: handleRegister,
+    onSubmit: cepInput,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 154,
+      columnNumber: 21
+    }
+  }, "Cadastrar "))));
+}
+
+/***/ })
+
+})
+//# sourceMappingURL=main.1b92f2481c8b6526a11a.hot-update.js.map
